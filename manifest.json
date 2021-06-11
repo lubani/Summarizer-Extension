@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Summarization Plugin-1",
+  "version": "1.0.1",
+  "description": "Grab text, summarize online, return summary to popup.",
+
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": "logo.png"
+  },
+
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "all_frames": true,
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": ["popcorn.gif"],
+  "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
+
+  "permissions": [
+    "activeTab",
+    "<all_urls>",
+    "declarativeContent",
+    "background",
+    "https://intense-mesa-62220.herokuapp.com/",
+    "https://private-api.smrzr.io/v1/"
+  ]
+}
